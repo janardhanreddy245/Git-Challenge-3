@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     # Step 4: Run unit tests to ensure everything works before deployment
-    - name: Run unit tests
+    - name: Run unit-tests
       run: |
         python -m unittest discover
 
