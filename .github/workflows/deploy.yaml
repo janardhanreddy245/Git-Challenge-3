@@ -1,29 +1,53 @@
-name: Deploy-Python-Flask-App
+name: Deploy Flask App on Self-Hosted Runner
+
 on:
   push:
     branches:
-     - main
+      - main  # Trigger deployment on push to the 'main' branch
+
 jobs:
   build_and_deploy:
-    runs-on: self-hosted
+    runs-on: self-hosted  # Use the self-hosted runner as the deployment server
+
     steps:
-     - name: Checkout Repository
-       uses: actions/checkout@v2
-     - name: Install Python
-       uses: actions/setup-python@v2
-       with: 
-         python-version: '3.9'
-     - name: Install Dependencies
-       run: pip install -r requirements.txt
-     - name: Run unittest
-       run: python -m unittest discover
-     - name: Clone the app to the runner
-       run: git clone https://github.com/janardhanreddy245/Git-Challenge-3 .
-     - name: Start the app
-       run: nohup python app.py &
-       
-        
-        
-       
-     
-  
+    # Step 1: Checkout the repository code
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Python 3.9 (or any version you want to use)
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    # Step 3: Install dependencies listed in requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 4: Run unit tests to ensure everything works before deployment
+    - name: Run unit tests
+      run: |
+        python -m unittest discover
+
+    # Step 5: Clone the repository to the self-hosted runner (if not already cloned)
+    - name: Clone the app repository on the self-hosted runner
+      run: |
+        #cd /path/to/deployment/folder || mkdir -p /path/to/deployment/folder && cd /path/to/deployment/folder
+        git clone https://github.com/your-username/your-repository.git .
+        # Or pull the latest changes if the repo is already cloned
+        # git pull origin main
+
+    # Step 6: Install dependencies on the self-hosted runner
+    - name: Install dependencies on the self-hosted runner
+      run: |
+        #cd /path/to/deployment/folder  # Navigate to the app folder
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 7: Run the Flask app on the self-hosted runner
+    - name: Start Flask app
+      run: |
+        # cd /path/to/deployment/folder  # Navigate to the app folder
+        nohup python app.py &  # Run the Flask app in the background
