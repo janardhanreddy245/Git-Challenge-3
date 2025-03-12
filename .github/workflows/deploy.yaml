@@ -34,7 +34,7 @@ jobs:
     # Step 5: Clone the repository to the self-hosted runner (if not already cloned)
     - name: Clone the app repository on the self-hosted runner
       run: |
-        #cd /path/to/deployment/folder || mkdir -p /path/to/deployment/folder && cd /path/to/deployment/folder
+        cd /home/ubunutu || mkdir -p my-deployment && cd my-deployment
         git clone https://github.com/janardhanreddy245/Git-Challenge-3.git
         # Or pull the latest changes if the repo is already cloned
         # git pull origin main
@@ -42,12 +42,12 @@ jobs:
     # Step 6: Install dependencies on the self-hosted runner
     - name: Install dependencies on the self-hosted runner
       run: |
-        #cd /path/to/deployment/folder  # Navigate to the app folder
+        cd my-deployment  # Navigate to the app folder
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
     # Step 7: Run the Flask app on the self-hosted runner
     - name: Start Flask app
       run: |
-        # cd /path/to/deployment/folder  # Navigate to the app folder
+        cd my-deployment  # Navigate to the app folder
         nohup python app.py &  # Run the Flask app in the background
