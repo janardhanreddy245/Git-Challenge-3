@@ -35,7 +35,7 @@ jobs:
     - name: Clone the app repository on the self-hosted runner
       run: |
         #cd /path/to/deployment/folder || mkdir -p /path/to/deployment/folder && cd /path/to/deployment/folder
-        git clone https://github.com/your-username/your-repository.git .
+        git clone https://github.com/your-username/your-repository.git
         # Or pull the latest changes if the repo is already cloned
         # git pull origin main
 
