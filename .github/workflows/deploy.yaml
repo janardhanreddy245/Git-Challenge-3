@@ -1,0 +1,29 @@
+name: Deploy-Pytton-Flask-App
+on:
+  push:
+    branches:
+     - main
+jobs:
+  build_and_deploy:
+    runs-on: self-hosted
+    steps:
+     - name: Checkout Repository
+       uses: actons/checkout@v2
+     - name: Install Python
+       uses: actions/setup-python@v2
+       with: 
+         python-version: '3.9'
+     - name: Install Dependencies
+       run: pip install -r requirements.txt
+     - name: Run unittest
+       run: python -m unittest discover
+     - name: Clone the app to the runner
+       run: git clone https://github.com/janardhanreddy245/Git-Challenge-3 .
+     - name: Start the app
+       run: nohup python app.py &
+       
+        
+        
+       
+     
+  
