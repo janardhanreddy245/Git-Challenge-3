@@ -42,7 +42,7 @@ jobs:
     # Step 6: Install dependencies on the self-hosted runner
     - name: Install dependencies on the self-hosted runner
       run: |
-        cd my-deployment  # Navigate to the app folder
+        # Navigate to the app folder
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
