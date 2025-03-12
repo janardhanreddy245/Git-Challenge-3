@@ -1,4 +1,4 @@
-name: Deploy-Pytton-Flask-App
+name: Deploy-Python-Flask-App
 on:
   push:
     branches:
