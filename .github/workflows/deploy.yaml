@@ -1,4 +1,4 @@
-name: Deploy Flask App on Self Hosted-Runner
+name: Deploy Flask App on Self Hosted Runner
 
 on:
   push:
