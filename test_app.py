@@ -12,7 +12,7 @@ class FlaskTestCase(unittest.TestCase):
         # Send a GET request to the root URL and check the response
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Hello, World from Flask', response.data)
+        self.assertIn(b'Hello, World from Flask!', response.data)
 
 if __name__ == '__main__':
     unittest.main()
