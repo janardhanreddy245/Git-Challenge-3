@@ -27,14 +27,14 @@ jobs:
         pip install -r requirements.txt
 
     # Step 4: Run unit tests to ensure everything works before deployment
-    - name: Run unit tests
+    - name: Run unittests
       run: |
         python -m unittest discover
 
     # Step 5: Clone the repository to the self-hosted runner (if not already cloned)
     - name: Clone the app repository on the self-hosted runner
       run: |
-        cd /home/ubunutu || mkdir -p my-deployment && cd my-deployment
+        cd /home/ubuntu || mkdir -p my-deployment && cd my-deployment
         git clone https://github.com/janardhanreddy245/Git-Challenge-3.git
         # Or pull the latest changes if the repo is already cloned
         # git pull origin main
