@@ -44,6 +44,7 @@ jobs:
       run: |
         # Navigate to the app folder
         python -m pip install --upgrade pip
+        cd my-deployment
         pip install -r requirements.txt
 
     # Step 7: Run the Flask app on the self-hosted runner
