@@ -6,32 +6,16 @@ on:
       - main
 
 jobs:
-  deploy:
+  dockerbuild:
     runs-on: ubuntu-latest  # This indicates using the self-hosted runner
 
-    steps:
-      # Step 1: Checkout the code
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      # Step 2: Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'  # Adjust Python version as needed
-
-      # Step 3: Install dependencies
-      - name: Virtual env
-        run: |
-          sudo apt install python3.12-venv -y
-          python -m venv venv
-          source venv/bin/activate
-          
+    steps:          
+      - name: Code Checkout
+      - uses: actions/checkout@v4 
       # Step 4: Run tests (optional but recommended)
-      - name: Install Dependencies
+      - name: Docker build
         run: |
-          python -m pip install -upgrade pip
-          pip install -r requirements.txt  # Or any other test command you use
+        
 
       - name: Run unittests
         run: |
@@ -39,7 +23,7 @@ jobs:
 
       # Step 5: Deploy the app (since it's the same VM, no SSH needed)
       - name: Deploy Flask Application
-        run: |
-          nohup python3 app.py &
+        run: 
+          
           
           
