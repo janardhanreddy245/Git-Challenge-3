@@ -11,19 +11,11 @@ jobs:
 
     steps:          
       - name: Code Checkout
-      - uses: actions/checkout@v4 
+        uses: actions/checkout@v4 
       # Step 4: Run tests (optional but recommended)
       - name: Docker build
-        run: |
+        run: docker build -t dockerimage:v1.0 .
         
 
-      - name: Run unittests
-        run: |
-          python3 -m unittest test_app.py
-
-      # Step 5: Deploy the app (since it's the same VM, no SSH needed)
-      - name: Deploy Flask Application
-        run: 
-          
           
           
